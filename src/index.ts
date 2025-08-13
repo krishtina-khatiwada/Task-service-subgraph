@@ -9,7 +9,10 @@ import { eq, and } from "drizzle-orm";
 
 const resolvers = {
   Query: {
-    Tasks(){
+      Tasks: async (_:any, context:{db:typeof db})=>{
+        const task= await context.db
+        .select()
+        .from(Task);
       return [Task]
     }
   },
