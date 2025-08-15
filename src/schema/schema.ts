@@ -3,7 +3,6 @@ import { buildSubgraphSchema } from "@apollo/subgraph";
 import {gql} from 'graphql-tag';
 const typeDefs= gql`
 type Task {
-    id:ID!
     Taskname:String!
     Taskstatus:String!
     Taskid:ID!
@@ -11,6 +10,7 @@ type Task {
 
 extend type users @key(fields: "id") {
   id: ID! @external
+  Tasks:[Task]
 }
 
 type Query{
