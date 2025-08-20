@@ -4,10 +4,14 @@ import { buildSubgraphSchema } from "@apollo/subgraph";
 import 'dotenv/config';
 import typeDefs from "./schema/schema.js";
 import { db } from "./db.js";
-import { tasks,addtask, deletetask, updatetask } from "./service/service.js";
+import { Task } from "./drizzle/schema.js";
+import { eq } from "drizzle-orm";
+import { tasks, addtask, deletetask, updatetask } from "./service/service.js";
+import { graphql, GraphQLError } from "graphql";
 
 const resolvers = {
   users:{
+
     _resolvereference:async(reference:any)=>{
       return{id:reference.id}
     },

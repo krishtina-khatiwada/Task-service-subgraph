@@ -17,7 +17,7 @@ type Query{
     Tasks:[Task]
 }
 type Mutation{
-    Addtask(Taskname:String!, Taskstatus:String!):Task
+    Addtask(Taskname:String, Taskstatus:String):Task
     Deletetask(Taskid:ID!):Task
     UpdateTask(Taskid:ID!,Taskname:String!, Taskstatus:String!):Task
 }
